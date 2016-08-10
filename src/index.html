@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Project 1</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Nosifer" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <!-- leaflet plugins -->
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.3/dist/leaflet.css"/>
+  </head>
+  <body>
+    <!-- main content -->
+    <div class="container">
+      <header>
+        <h1 class="center-align">Election 2016</h1>
+      </header>
+      <main>
+        <div id="map"></div>
+        <div class="popupinfo"></div>
+      </main>
+      <div class="row">
+        <div class="col 2"><img class="party-icon" src="img/donkey-americal-political-symbol-of-democrats.svg"/></div>
+        <div class="col 2 offset-s8"><img class="party-icon" src="img/elephant-republican-symbol.svg"/></div>
+        <div id="progressbar" class="col 8"></div>
+      </div>
+    </div>
+    <!-- jQuery script -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <!-- materialize js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- site js script -->
+    <script type="text/javascript" src="main.js"></script>
+    <!-- geojson data js file -->
+    <script type="text/javascript" src="us-states.js"></script>
+  </body>
+</html>
