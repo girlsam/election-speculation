@@ -12,7 +12,7 @@ $(document).ready(function() {
   $.ajax({
     method: 'GET',
     dataType: 'jsonp',
-    url: 'http://pollyvote.com/wp-content/plugins/pollyvote/data/index.php?time=current&level=state'
+    url: 'https://pollyvote.com/wp-content/plugins/pollyvote/data/index.php?time=current&level=state'
   }).then(function(states) {
     var statesArr = states.data.map(function(stateInfo) {
       return { name: stateInfo.state, party: stateInfo.fcwinner, repubNumbers: stateInfo.fcrepvs, demNumbers: stateInfo.fcdemvs };
