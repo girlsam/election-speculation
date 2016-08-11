@@ -14,15 +14,15 @@ $(document).ready(function() {
     dataType: 'jsonp',
     url: 'https://pollyvote.com/wp-content/plugins/pollyvote/data/index.php?time=current&level=state'
   }).then(function(states) {
-    var statesArr = states.data.map(function(stateInfo) {
+    const STATESARR = states.data.map(function(stateInfo) {
       return { name: stateInfo.state, party: stateInfo.fcwinner, repubNumbers: stateInfo.fcrepvs, demNumbers: stateInfo.fcdemvs };
     });
-    for (var i = 0; i < statesData.features.length; i++) {
-      for (var j = 0; j < statesArr.length; j++) {
-        if (statesData.features[i].name === statesArr[j].name) {
-          statesData.features[i].party = statesArr[j].party;
-          statesData.features[i].demNumbers = statesArr[j].demNumbers;
-          statesData.features[i].repubNumbers = statesArr[j].repubNumbers;
+    for (let i = 0; i < statesData.features.length; i++) {
+      for (let j = 0; j < STATESARR.length; j++) {
+        if (statesData.features[i].name === STATESARR[j].name) {
+          statesData.features[i].party = STATESARR[j].party;
+          statesData.features[i].demNumbers = STATESARR[j].demNumbers;
+          statesData.features[i].repubNumbers = STATESARR[j].repubNumbers;
         }
       }
     }
@@ -68,9 +68,22 @@ $(document).ready(function() {
 
   function onClick(e) {
     var layer = e.target;
-    //console.log(layer);
+      var stateEvotes = e.target.feature.evotes;
+      assignOppositeParty(e.target.feature.party);
+      // if (e.target.feature.party === "R") {
+      //   repVotes -= stateEvotes;
+      //   demVotes += stateEvotes;
+      //   return repVotes;
+      // } else if (e.target.feature.party === "D") {
+      //   repVotes += stateEvotes;
+      //   demVotes -= stateEvotes;
+      //   return demVotes;
+      // }
+      console.log(stateEvotes);
+      $('#dem-votes').text(demVotes);
+      $('#rep-votes').text(repVotes);
     layer.setStyle({
-      fillColor: assignOppositeColor('R')
+      fillColor: assignOppositeColor(e.target.feature.party)
     });
   }
 
@@ -107,6 +120,11 @@ function assignColor(party) {
 function assignOppositeColor(party) {
   var diffColor = (party === "D") ? "#E80200" : "#3625FF";
   return diffColor;
+}
+
+function assignOppositeParty(party) {
+  var otherParty = (party === "r") ? "D" : "R";
+  return otherParty;
 }
 
 // style GeoJSON layer based on party
