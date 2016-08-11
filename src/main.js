@@ -52,18 +52,47 @@ $(document).ready(function() {
   }
   var info = L.control({position: 'bottomright'});
 
+  // create div with info container
   info.onAdd = function (map) {
     this.__div = L.DomUtil.create('div', 'info');
     this.update();
     return this.__div;
   };
 
+  // add info to dom, on load and update
   info.update = function (props) {
     this.__div.innerHTML = '<h4>Today\'s Polling Numbers</h4>' +  (props ?
       '<b>' + props.fullName + '</b><br/>Democrat: ' + props.demNumbers + ' %' + '<br/>Republican: ' + props.repubNumbers + '%': '<b>Hover over a state!</b>');
   };
 
+  // function to total electoral votes based on party
+  function totalElectoralVotes(party) {
+    var total = 0;
+    statesData.features.forEach(function(states) {
+      if (states.party === party) {
+        total += states.evotes;
+      }
+    });
+    return total;
+  }
+
+  var demVotes = totalElectoralVotes('D');
+  var repVotes = totalElectoralVotes('R');
+
+  //apply eachFeature to dom
   info.addTo(map);
+
+  map.on('click', function(e) {
+    for (var x = 0; x < statesData.features.length; x++) {
+      if (statesData.features[x].name === x) {
+        return states.features[x].evotes;
+      }
+    }
+  });
+
+  //add electoral vote count to DOM
+  $('#dem-votes').text(demVotes);
+  $('#rep-votes').text(repVotes);
   });
 });
 
