@@ -36,7 +36,7 @@ $(document).ready(function() {
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
-      fillOpacity: 0.5
+      fillOpacity: 0.5,
     });
     info.update(layer.feature);
   }
@@ -62,8 +62,19 @@ $(document).ready(function() {
   // add info to dom, on load and update
   info.update = function (props) {
     this.__div.innerHTML = '<h4>Today\'s Polling Numbers</h4>' +  (props ?
-      '<b>' + props.fullName + '</b><br/>Democrat: ' + props.demNumbers + ' %' + '<br/>Republican: ' + props.repubNumbers + '%': '<b>Hover over a state!</b>');
+      '<b>' + props.fullName + '</b><br/>Democrat: ' + props.demNumbers + ' %' + '<br/>Republican: ' + props.repubNumbers + '%': '<b>Hover over a state!</b>' );
   };
+
+  function onClick(e) {
+    var layer = e.target;
+    console.log(layer);
+    layer.setStyle({
+      fillColor: '#E80200'
+    });
+    info.update();
+  }
+
+    map.on('click', onClick);
 
   // function to total electoral votes based on party
   function totalElectoralVotes(party) {
@@ -82,13 +93,11 @@ $(document).ready(function() {
   //apply eachFeature to dom
   info.addTo(map);
 
-  map.on('click', function(e) {
-    for (var x = 0; x < statesData.features.length; x++) {
-      if (statesData.features[x].name === x) {
-        return states.features[x].evotes;
-      }
-    }
-  });
+  // map.on('click', function(e) {
+  //   statesData.features.forEach(function(states) {
+  //     console.log(states.evotes);
+  //   });
+  // });
 
   //add electoral vote count to DOM
   $('#dem-votes').text(demVotes);
