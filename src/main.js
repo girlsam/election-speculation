@@ -93,20 +93,6 @@ $(document).ready(function() {
   //apply eachFeature to dom
   info.addTo(map);
 
-<<<<<<< HEAD
-  map.on('click', function(e) {
-    statesData.features.forEach(function(states) {
-      console.log(states.evotes);  
-    });
-  });
-=======
-  // map.on('click', function(e) {
-  //   statesData.features.forEach(function(states) {
-  //     console.log(states.evotes);
-  //   });
-  // });
->>>>>>> 8997b30f0c1410987ac0c26b7ac85e5110f1bf60
-
   //add electoral vote count to DOM
   $('#dem-votes').text(demVotes);
   $('#rep-votes').text(repVotes);
