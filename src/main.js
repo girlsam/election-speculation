@@ -48,6 +48,7 @@ $(document).ready(function() {
     layer.on({
       mouseover: highlightFeature,
       mouseout: resetHighlight,
+      click: onClick
     });
   }
   var info = L.control({position: 'bottomright'});
@@ -67,14 +68,11 @@ $(document).ready(function() {
 
   function onClick(e) {
     var layer = e.target;
-    console.log(layer);
+    //console.log(layer);
     layer.setStyle({
-      fillColor: '#E80200'
+      fillColor: assignOppositeColor('R')
     });
-    info.update();
   }
-
-    map.on('click', onClick);
 
   // function to total electoral votes based on party
   function totalElectoralVotes(party) {
@@ -105,6 +103,12 @@ function assignColor(party) {
   var color = (party === "R") ? "#E80200" : "#3625FF";
   return color;
 }
+
+function assignOppositeColor(party) {
+  var diffColor = (party === "D") ? "#E80200" : "#3625FF";
+  return diffColor;
+}
+
 // style GeoJSON layer based on party
 function style(feature) {
   return {
