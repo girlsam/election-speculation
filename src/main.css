@@ -15,7 +15,7 @@ h1 {
   width: 100px;
   height: 100px;
 }
-#progressbar {
+#fillbar {
   height: 50px;
   width: 500px;
   color: black;
@@ -27,11 +27,23 @@ h1 {
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
+<<<<<<< HEAD
   font-size: 12px;
+=======
+  font-size: 10px;
+>>>>>>> 1c372a63e3a57857c38b608ad2fd4f4b8e2d9af5
   text-align: center;
 }
 .info h4 {
   margin: 0 0 5px;
   color: #777;
   font-size: 14px;
+}
+#dem-votes {
+  font-size: 70px;
+  color: #3625FF;
+}
+#rep-votes {
+  color: #E80200;
+  font-size: 70px;
 }
