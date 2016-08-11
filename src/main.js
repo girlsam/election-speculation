@@ -69,19 +69,24 @@ $(document).ready(function() {
   function onClick(e) {
     var layer = e.target;
       var stateEvotes = e.target.feature.evotes;
+      var $demVotes = Number.parseInt($('#dem-votes').text());
+      var $repVotes = Number.parseInt($('#rep-votes').text());
+      console.log('dem: ' + typeof $demVotes);
+      console.log('rep: ' + typeof $repVotes);
       assignOppositeParty(e.target.feature.party);
-      // if (e.target.feature.party === "R") {
-      //   repVotes -= stateEvotes;
-      //   demVotes += stateEvotes;
-      //   return repVotes;
-      // } else if (e.target.feature.party === "D") {
-      //   repVotes += stateEvotes;
-      //   demVotes -= stateEvotes;
-      //   return demVotes;
-      // }
+      if (e.target.feature.party === "R") {
+        $repVotes -= stateEvotes;
+        $demVotes += stateEvotes;
+        console.log($repVotes);
+      } else if (e.target.feature.party === "D") {
+        $repVotes += stateEvotes;
+        $demVotes -= stateEvotes;
+        console.log($repVotes);
+        console.log($demVotes);
+      }
       console.log(stateEvotes);
-      $('#dem-votes').text(demVotes);
-      $('#rep-votes').text(repVotes);
+      $('#dem-votes').text($demVotes);
+      $('#rep-votes').text($repVotes);
     layer.setStyle({
       fillColor: assignOppositeColor(e.target.feature.party)
     });
