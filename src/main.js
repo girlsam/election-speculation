@@ -83,11 +83,9 @@ $(document).ready(function() {
   info.addTo(map);
 
   map.on('click', function(e) {
-    for (var x = 0; x < statesData.features.length; x++) {
-      if (statesData.features[x].name === x) {
-        return states.features[x].evotes;
-      }
-    }
+    statesData.features.forEach(function(states) {
+      console.log(states.evotes);  
+    });
   });
 
   //add electoral vote count to DOM
