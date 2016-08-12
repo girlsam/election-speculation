@@ -17,21 +17,35 @@
       <header>
         <div class="row">
           <h1 class="center-align">Election 2016</h1>
-          <br>
-          <button id="button" class="waves-effect waves-light btn #311b92 deep-purple darken-4" type="button" name="button">Reset</button>
         </div>
       </header>
       <main>
         <div id="map"></div>
         <div class="popupinfo"></div>
       </main>
-      <div class="row">
-        <div class="col 4" id="dem-votes"></div>
-        <div class="col 4 offset-s8" id="rep-votes"></div>
+      <div class="container">
+        <div class="row">
+          <table>
+            <thead>
+              <tr>
+                <th><img id="dem-icon" src="img/donkey-americal-political-symbol-of-democrats.svg" alt="Democrats"/></th>
+                <th class="table-header centered">270 to Win!</th>
+                <th><img id="rep-icon" src="img/elephant-republican-symbol.svg" alt="Democrats"/></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div id="dem-votes"></div></td>
+                <td></td>
+                <td><div id="rep-votes"></div></td>
+              </tr>
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <div class="row">
-        <h3 class="center-align">Winning Number: 270!</h3>
-      </div>
+      <button id="button" class="col 1 waves-effect waves-light btn #311b92 deep-purple darken-4" type="button" name="button">Reset Vote Count</button>
     </div>
     <!-- jQuery script -->
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

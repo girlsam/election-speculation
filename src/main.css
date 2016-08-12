@@ -5,6 +5,7 @@ body {
 h1 {
   font-family: "Nosifer", Arial, sans-serif;
   font-size: 36px;
+  margin-bottom: -5px;
 }
 #map {
   width: 730px;
@@ -12,13 +13,6 @@ h1 {
   border: white 10px;
   margin-left: 70px;
   margin-top: 10px;
-}
-.party-icon {
-  width: 100px;
-  height: 100px;
-}
-#button {
-  margin: auto;
 }
 .info {
   padding: 6px 8px;
@@ -35,12 +29,28 @@ h1 {
   color: #777;
   font-size: 14px;
 }
+.table-header {
+  text-align: center;
+}
 #dem-votes {
-  font-size: 70px;
   color: #3625FF;
-  margin-left: 10px;
+  font-size: 40px;
 }
 #rep-votes {
   color: #E80200;
-  font-size: 70px;
+  font-size: 40px;
+  float: right;
+}
+#rep-icon {
+  height: 50px;
+  width: 50px;
+  float: right;
+}
+#dem-icon {
+  height: 50px;
+  width: 50px;
+}
+#button {
+  margin-left: 320px;
+  margin-bottom: 5px;
 }
