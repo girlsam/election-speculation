@@ -4,22 +4,21 @@ body {
 }
 h1 {
   font-family: "Nosifer", Arial, sans-serif;
-  font-size: 48px;
+  font-size: 36px;
 }
 #map {
   width: 730px;
   height: 385px;
   border: white 10px;
   margin-left: 70px;
+  margin-top: 10px;
 }
 .party-icon {
   width: 100px;
   height: 100px;
 }
-#fillbar {
-  height: 50px;
-  width: 500px;
-  color: black;
+#button {
+  margin: auto;
 }
 .info {
   padding: 6px 8px;
@@ -44,8 +43,4 @@ h1 {
 #rep-votes {
   color: #E80200;
   font-size: 70px;
-}
-
-#button {
-  margin-top: 10px;
 }

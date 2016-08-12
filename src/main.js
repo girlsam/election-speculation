@@ -19,10 +19,11 @@ $(document).ready(function() {
     });
     for (let i = 0; i < statesData.features.length; i++) {
       for (let j = 0; j < STATESARR.length; j++) {
-        if (statesData.features[i].name === STATESARR[j].name) {
-          statesData.features[i].party = STATESARR[j].party;
-          statesData.features[i].demNumbers = STATESARR[j].demNumbers;
-          statesData.features[i].repubNumbers = STATESARR[j].repubNumbers;
+        var stateListGeoJson = statesData.features[i];
+        if (stateListGeoJson.name === STATESARR[j].name) {
+          stateListGeoJson.party = STATESARR[j].party;
+          stateListGeoJson.demNumbers = STATESARR[j].demNumbers;
+          stateListGeoJson.repubNumbers = STATESARR[j].repubNumbers;
         }
       }
     }
@@ -46,9 +47,9 @@ $(document).ready(function() {
   }
   function onEachFeature(feature, layer) {
     layer.on({
+      click: onClick,
       mouseover: highlightFeature,
-      mouseout: resetHighlight,
-      click: onClick
+      mouseout: resetHighlight
     });
   }
   var info = L.control({position: 'bottomright'});
@@ -68,23 +69,18 @@ $(document).ready(function() {
 
   function onClick(e) {
     var layer = e.target;
-      var stateEvotes = e.target.feature.evotes;
+      const STATEVOTES = e.target.feature.evotes;
       var $demVotes = Number.parseInt($('#dem-votes').text());
       var $repVotes = Number.parseInt($('#rep-votes').text());
-      console.log('dem: ' + typeof $demVotes);
-      console.log('rep: ' + typeof $repVotes);
       assignOppositeParty(e.target.feature.party);
       if (e.target.feature.party === "R") {
-        $repVotes -= stateEvotes;
-        $demVotes += stateEvotes;
+        $repVotes -= STATEVOTES;
+        $demVotes += STATEVOTES;
         console.log($repVotes);
       } else if (e.target.feature.party === "D") {
-        $repVotes += stateEvotes;
-        $demVotes -= stateEvotes;
-        console.log($repVotes);
-        console.log($demVotes);
+        $repVotes += STATEVOTES;
+        $demVotes -= STATEVOTES;
       }
-      console.log(stateEvotes);
       $('#dem-votes').text($demVotes);
       $('#rep-votes').text($repVotes);
     layer.setStyle({
@@ -112,6 +108,15 @@ $(document).ready(function() {
   //add electoral vote count to DOM
   $('#dem-votes').text(demVotes);
   $('#rep-votes').text(repVotes);
+
+  $('button').on('click', function(event) {
+    event.preventDefault();
+    console.log('what');
+    var resetDemVotes = totalElectoralVotes('D');
+    var resetRepVotes = totalElectoralVotes('R');
+    $('#dem-votes').text(resetDemVotes);
+    $('#rep-votes').text(resetRepVotes);
+    });
   });
 });
 
