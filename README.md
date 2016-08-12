@@ -10,4 +10,4 @@ To accomplish this distillation of data, I sought to create an interactive appli
 
 
 See Demo Below:
-![Demo](project_demo.mov)
+![Demo](project_demo.gif)
