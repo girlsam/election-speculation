@@ -12,5 +12,4 @@ To review polling data, mouseover each state and watch the data populate in the 
 
 This is not a finished product. The functionality to permanently change the state's color on-click isn't there, it only changes on hover and click. I would also like to add more to the styling of the page. The focus has been functionality over style.
 
-See Demo Below:
 ![Demo](project_demo.gif)
