@@ -1,5 +1,6 @@
 ## Unit 1 Project
 Updated August 12, 2016
+Also found at: https://girlsam.github.io/project-unit1/src/
 
 #### Speculation 2016
 
